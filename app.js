@@ -19,6 +19,7 @@ res.send('<h1>Store API </h1><a href="/api/vi/products">prouducts route</a>')
 })
 
 
+app.use('/api/v1/products');
 
 //prouduct route
 
