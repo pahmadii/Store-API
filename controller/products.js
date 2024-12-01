@@ -10,7 +10,7 @@ const getAllProductsStatic=async (req,res)=>{
 
 const getAllProducts=async (req,res)=>{
 
-    const{featured,company,name,sort}=req.query;
+    const{featured,company,name,sort,fields}=req.query;
     const queryObject={}
 
     if(featured){
@@ -25,11 +25,12 @@ if(name){
     queryObject.name={$regex:name,$options:'i'}; 
 }
 
-//console.log(queryObject);
+    //console.log(queryObject);
 
     let result=Product.find(queryObject);
 
-    
+    //sort
+
     if(sort){
       
     const sortList=sort.split(',').join(' ');
@@ -38,7 +39,14 @@ if(name){
     }
     else{
         result=result.sort('createdAt')
+    };
+
+    if(fields){
+    const fieldsList=fields.split(',').join(' ');
+    result=result.select(fieldsList);
     }
+
+
     const products=await result
     res.status(200).json({products, nbHits: products.length})
 };
