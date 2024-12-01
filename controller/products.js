@@ -3,11 +3,8 @@ const Product=require('../models/product');
 
 
 const getAllProductsStatic=async (req,res)=>{
-    const search='ab'
 
-    const products=await Product.find({
-        name:{$regex:search,$options:'i'},
-    });
+    const products=await Product.find({})
     res.status(200).json({products, nbHits: products.length});
 };
 
