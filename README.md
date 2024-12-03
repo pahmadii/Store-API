@@ -19,7 +19,6 @@ This is a simple **Store API** built with **Node.js** and **Express.js** to mana
 ### Setup Instructions
 
 1. Clone the repository:
-   ```bash
 https://github.com/pahmadii/Store-API.git
 
 
